@@ -15,4 +15,13 @@
     <select id="selectAll" resultMap="privilegeMap">
         select * from sys_privilege
     </select>
+
+    <insert id="insert">
+        insert into sys_privilege(privilege_name, privilege_url)
+        values(#{privilegeName}, #{privilegeUrl})
+
+        <selectKey keyProperty="id" keyColumn="id" resultType="long" order="AFTER"> <!-- order 和 SQL 对于不同的数据库有不同的设置-->
+            select last_insert_id()
+        </selectKey>
+    </insert>
 </mapper>

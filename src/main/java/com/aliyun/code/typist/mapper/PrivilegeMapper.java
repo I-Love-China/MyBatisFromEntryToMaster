@@ -8,4 +8,6 @@ public interface PrivilegeMapper {
     public SysPrivilege selectById(Long id);
 
     List<SysPrivilege> selectAll();
+
+    int insert(SysPrivilege privilege);
 }
