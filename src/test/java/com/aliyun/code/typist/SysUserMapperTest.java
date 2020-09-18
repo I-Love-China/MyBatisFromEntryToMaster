@@ -89,6 +89,10 @@ public class SysUserMapperTest extends BaseMapperTest {
             List<SysUser> userList = userMapper.selectByUserAndPwd(params);
             Assert.assertNotNull(userList);
             Assert.assertTrue(!userList.isEmpty());
+
+            List<SysUser> userList_2 = userMapper.selectByUserAndPwd("test", "123456");
+            Assert.assertNotNull(userList_2);
+            Assert.assertTrue(!userList_2.isEmpty());
         }
     }
 }
