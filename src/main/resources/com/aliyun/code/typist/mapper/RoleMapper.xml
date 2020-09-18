@@ -2,7 +2,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aliyun.code.typist.mapper.RoleMapper">
-    <select id="selectById" resultType="SysRole">
-        select * from sys_role where id = #{id}
-    </select>
+
 </mapper>
