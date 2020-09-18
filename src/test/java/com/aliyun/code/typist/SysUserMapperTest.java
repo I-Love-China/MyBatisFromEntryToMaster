@@ -33,6 +33,7 @@ public class SysUserMapperTest extends BaseMapperTest {
 
             int rows = userMapper.insert(user);
             Assert.assertEquals(1, rows);
+            Assert.assertNotNull(user.getId());
 
             sqlSession.rollback();
         }
