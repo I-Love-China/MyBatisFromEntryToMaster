@@ -30,4 +30,11 @@
     <delete id="deleteById">
         delete from sys_user where id = #{id}
     </delete>
+
+    <select id="selectByUserAndPwd" resultType="SysUser">
+        select *
+        from sys_user
+        where user_name = #{userName}
+          and user_password = #{userPassword}
+    </select>
 </mapper>

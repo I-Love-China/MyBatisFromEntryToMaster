@@ -7,6 +7,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SysUserMapperTest extends BaseMapperTest {
     @Test
@@ -71,6 +74,21 @@ public class SysUserMapperTest extends BaseMapperTest {
             Assert.assertEquals(rows_2, 1);
 
             sqlSession.rollback();
+        }
+    }
+
+    @Test
+    public void testSelectByUserAndPwd() {
+        try(SqlSession sqlSession = getSqlSession()) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+            Map<String, String> params = new HashMap<>();
+            params.put("userName", "admin");
+            params.put("userPassword", "123456");
+
+            List<SysUser> userList = userMapper.selectByUserAndPwd(params);
+            Assert.assertNotNull(userList);
+            Assert.assertTrue(!userList.isEmpty());
         }
     }
 }
