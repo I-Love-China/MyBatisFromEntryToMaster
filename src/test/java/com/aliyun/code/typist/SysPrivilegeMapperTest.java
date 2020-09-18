@@ -8,7 +8,7 @@ public class SysPrivilegeMapperTest extends BaseMapperTest {
     @Test
     public void testSelectById() {
         try (SqlSession sqlSession = getSqlSession()) {
-            SysPrivilege sysPrivilege = sqlSession.selectOne("mapper.PrivilegeMapper.selectById", 1L);
+            SysPrivilege sysPrivilege = sqlSession.selectOne("com.aliyun.code.typist.mapper.PrivilegeMapper.selectById", 1L);
             System.out.println(sysPrivilege);
         }
     }

@@ -12,7 +12,7 @@ public class SysUserRoleMapperTest extends BaseMapperTest {
     @Test
     public void testSelectByUser() {
         try (SqlSession sqlSession = getSqlSession()) {
-            List<SysUserRole> roleList = sqlSession.selectList("mapper.UserRoleMapper.selectByUser", 1L);
+            List<SysUserRole> roleList = sqlSession.selectList("com.aliyun.code.typist.mapper.UserRoleMapper.selectByUser", 1L);
             for(SysUserRole userRole: roleList) {
                 System.out.println(userRole);
             }

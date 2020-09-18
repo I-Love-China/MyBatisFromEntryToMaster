@@ -10,7 +10,7 @@ public class SysRolePrivilegeMapperTest extends BaseMapperTest {
     @Test
     public void testSelectByRole() {
         try (SqlSession sqlSession = getSqlSession()) {
-            List<SysRolePrivilege> rolePrivilegeList = sqlSession.selectList("mapper.RolePrivilegeMapper.selectByRole", 1L);
+            List<SysRolePrivilege> rolePrivilegeList = sqlSession.selectList("com.aliyun.code.typist.mapper.RolePrivilegeMapper.selectByRole", 1L);
             for(SysRolePrivilege rolePrivilege : rolePrivilegeList) {
                 System.out.println(rolePrivilege);
             }

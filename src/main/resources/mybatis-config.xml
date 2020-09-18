@@ -27,10 +27,11 @@
     </environments>
 
     <mappers>
-        <mapper resource="mapper/SysUserMapper.xml" />
-        <mapper resource="mapper/SysRoleMapper.xml" />
-        <mapper resource="mapper/SysPrivilegeMapper.xml" />
-        <mapper resource="mapper/SysUserRoleMapper.xml" />
-        <mapper resource="mapper/SysRolePrivilegeMapper.xml" />
+        <!--<mapper resource="mapper/UserMapper.xml" />-->
+        <!--<mapper resource="mapper/RoleMapper.xml" />-->
+        <!--<mapper resource="mapper/PrivilegeMapper.xml" />-->
+        <!--<mapper resource="mapper/UserRoleMapper.xml" />-->
+        <!--<mapper resource="mapper/RolePrivilegeMapper.xml" />-->
+        <package name="com.aliyun.code.typist.mapper"/>
     </mappers>
 </configuration>

@@ -8,7 +8,7 @@ public class SysRoleMapperTest extends BaseMapperTest {
     @Test
     public void testSelectById() {
         try (SqlSession sqlSession = getSqlSession()) {
-            SysRole sysRole = sqlSession.selectOne("mapper.RoleMapper.selectById", 1L);
+            SysRole sysRole = sqlSession.selectOne("com.aliyun.code.typist.mapper.RoleMapper.selectById", 1L);
             System.out.println(sysRole);
         }
     }
