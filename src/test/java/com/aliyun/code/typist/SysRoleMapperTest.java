@@ -68,4 +68,23 @@ public class SysRoleMapperTest extends BaseMapperTest {
             sqlSession.rollback();
         }
     }
+
+    @Test
+    public void testInsertAndWriteBackId() {
+        try (SqlSession sqlSession = getSqlSession()) {
+            RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+
+            SysRole role = new SysRole();
+            role.setRoleName("测试插入");
+            role.setEnabled(0);
+            role.setCreateBy(1L);
+            role.setCreateTime(new Date());
+
+            int rows = roleMapper.insertAndWriteBackId_JDBC(role);
+            Assert.assertEquals(rows, 1);
+            Assert.assertNotNull(role.getId());
+
+            sqlSession.rollback();
+        }
+    }
 }

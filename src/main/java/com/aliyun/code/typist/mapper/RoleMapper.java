@@ -34,4 +34,12 @@ public interface RoleMapper {
             "(#{id}, #{roleName}, #{enabled}, #{createBy}, #{createTime})"
     })
     int insert(SysRole role);
+
+    @Insert({
+            "insert into sys_role",
+            "(role_name, enabled, create_by, create_time) values",
+            "(#{roleName}, #{enabled}, #{createBy}, #{createTime})"
+    })
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    int insertAndWriteBackId_JDBC(SysRole role);
 }
