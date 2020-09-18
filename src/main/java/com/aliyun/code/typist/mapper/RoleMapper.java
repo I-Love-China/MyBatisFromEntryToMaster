@@ -1,10 +1,7 @@
 package com.aliyun.code.typist.mapper;
 
 import com.aliyun.code.typist.model.SysRole;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -30,4 +27,11 @@ public interface RoleMapper {
     @Select("select * from sys_role where create_by = #{creatorId}")
     @ResultMap("@roleMap")
     List<SysRole> selectByCreateBy(Long creatorId);
+
+    @Insert({
+            "insert into sys_role",
+            "(id, role_name, enabled, create_by, create_time) values",
+            "(#{id}, #{roleName}, #{enabled}, #{createBy}, #{createTime})"
+    })
+    int insert(SysRole role);
 }

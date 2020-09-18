@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.List;
 
 public class SysRoleMapperTest extends BaseMapperTest {
@@ -47,6 +48,24 @@ public class SysRoleMapperTest extends BaseMapperTest {
 
             Assert.assertNotNull(roles);
             Assert.assertTrue(!roles.isEmpty());
+        }
+    }
+
+    @Test
+    public void testInsert() {
+        try (SqlSession sqlSession = getSqlSession()) {
+            RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+
+            SysRole role = new SysRole();
+            role.setRoleName("测试插入");
+            role.setEnabled(0);
+            role.setCreateBy(1L);
+            role.setCreateTime(new Date());
+
+            int rows = roleMapper.insert(role);
+            Assert.assertEquals(rows, 1);
+
+            sqlSession.rollback();
         }
     }
 }
