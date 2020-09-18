@@ -1,6 +1,7 @@
 package com.aliyun.code.typist;
 
 
+import com.aliyun.code.typist.mapper.UserRoleMapper;
 import com.aliyun.code.typist.model.SysRole;
 import com.aliyun.code.typist.model.SysUserRole;
 import org.apache.ibatis.session.SqlSession;
@@ -12,7 +13,7 @@ public class SysUserRoleMapperTest extends BaseMapperTest {
     @Test
     public void testSelectByUser() {
         try (SqlSession sqlSession = getSqlSession()) {
-            List<SysUserRole> roleList = sqlSession.selectList("com.aliyun.code.typist.mapper.UserRoleMapper.selectByUser", 1L);
+            List<SysUserRole> roleList = sqlSession.getMapper(UserRoleMapper.class).selectByUser(1L);
             for(SysUserRole userRole: roleList) {
                 System.out.println(userRole);
             }
