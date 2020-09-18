@@ -8,7 +8,7 @@ public class SysUserMapperTest extends BaseMapperTest {
     @Test
     public void testSelectById() {
         try (SqlSession sqlSession = getSqlSession()) {
-            SysUser sysUser = sqlSession.selectOne("selectById", 1L);
+            SysUser sysUser = sqlSession.selectOne("mapper.UserMapper.selectById", 1L);
             System.out.println(sysUser);
         }
     }

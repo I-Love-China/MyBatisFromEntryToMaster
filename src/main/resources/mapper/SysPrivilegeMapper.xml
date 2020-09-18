@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mapper.UserMapper">
-    <select id="selectById" resultType="SysUser">
-        select * from sys_user where id = #{id}
+<mapper namespace="mapper.PrivilegeMapper">
+    <select id="selectById" resultType="SysPrivilege">
+        select * from sys_privilege where id = #{id}
     </select>
 </mapper>

@@ -28,9 +28,9 @@
 
     <mappers>
         <mapper resource="mapper/SysUserMapper.xml" />
-        <!--<mapper resource="mapper/SysRoleMapper.xml" />-->
-        <!--<mapper resource="mapper/SysUserRoleMapper.xml" />-->
-        <!--<mapper resource="mapper/SysPrivilegeMapper.xml" />-->
-        <!--<mapper resource="mapper/SysRolePrivilegeMapper.xml" />-->
+        <mapper resource="mapper/SysRoleMapper.xml" />
+        <mapper resource="mapper/SysPrivilegeMapper.xml" />
+        <mapper resource="mapper/SysUserRoleMapper.xml" />
+        <mapper resource="mapper/SysRolePrivilegeMapper.xml" />
     </mappers>
 </configuration>
