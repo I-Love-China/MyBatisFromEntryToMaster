@@ -8,4 +8,8 @@ public interface UserMapper {
     int insert(SysUser sysUser);
 
     int updateById(SysUser sysUser);
+
+    int deleteById(SysUser sysUser);
+
+    int deleteById(Long id);
 }
