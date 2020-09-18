@@ -2,7 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aliyun.code.typist.mapper.PrivilegeMapper">
+    <resultMap id="privilegeMap" type="com.aliyun.code.typist.model.SysPrivilege">
+        <id property="id" column="id" />
+        <result property="privilegeName" column="privilege_name" />
+        <result property="privilegeUrl" column="privilege_url" />
+    </resultMap>
+
     <select id="selectById" resultType="SysPrivilege">
         select * from sys_privilege where id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="privilegeMap">
+        select * from sys_privilege
     </select>
 </mapper>
