@@ -20,7 +20,7 @@ public class SysRoleMapperTest extends BaseMapperTest {
 
     @Test
     public void testSelectAll() {
-        try(SqlSession sqlSession = getSqlSession()) {
+        try (SqlSession sqlSession = getSqlSession()) {
             RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
             List<SysRole> roles = roleMapper.selectAll();
 
@@ -31,7 +31,7 @@ public class SysRoleMapperTest extends BaseMapperTest {
 
     @Test
     public void testSelectByEnabled() {
-        try(SqlSession sqlSession = getSqlSession()) {
+        try (SqlSession sqlSession = getSqlSession()) {
             RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
             List<SysRole> roles = roleMapper.selectByEnabled(1);
 
@@ -104,6 +104,22 @@ public class SysRoleMapperTest extends BaseMapperTest {
             RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
 
             int rows = roleMapper.deleteById(1L);
+            Assert.assertEquals(rows, 1);
+
+            sqlSession.rollback();
+        }
+    }
+
+    @Test
+    public void testUpdateById() {
+        try (SqlSession sqlSession = getSqlSession()) {
+            RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+
+            SysRole role = roleMapper.selectById(1L);
+            Assert.assertNotNull(role);
+
+            role.setRoleName("测试 UPDATE");
+            int rows = roleMapper.updateById(role);
             Assert.assertEquals(rows, 1);
 
             sqlSession.rollback();
