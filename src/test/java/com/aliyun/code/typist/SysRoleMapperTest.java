@@ -97,4 +97,16 @@ public class SysRoleMapperTest extends BaseMapperTest {
             sqlSession.rollback();
         }
     }
+
+    @Test
+    public void testDelete() {
+        try (SqlSession sqlSession = getSqlSession()) {
+            RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+
+            int rows = roleMapper.deleteById(1L);
+            Assert.assertEquals(rows, 1);
+
+            sqlSession.rollback();
+        }
+    }
 }

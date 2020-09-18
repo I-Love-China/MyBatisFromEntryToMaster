@@ -55,4 +55,7 @@ public interface RoleMapper {
             before = false
     )
     int insertAndWriteBackId_SELECT_KEY(SysRole role);
+
+    @Delete("delete from sys_role where id = #{id}")
+    int deleteById(Long id);
 }
