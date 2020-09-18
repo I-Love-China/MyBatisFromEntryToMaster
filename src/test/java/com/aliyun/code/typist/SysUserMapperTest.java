@@ -38,4 +38,21 @@ public class SysUserMapperTest extends BaseMapperTest {
             sqlSession.rollback();
         }
     }
+
+    @Test
+    public void testUpdateById() {
+        try(SqlSession sqlSession = getSqlSession()) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+            SysUser user = userMapper.selectById(1L);
+            Assert.assertNotNull(user);
+
+            user.setUserInfo("测试 update");
+            int rows = userMapper.updateById(user);
+
+            Assert.assertEquals(rows, 1);
+
+            sqlSession.rollback();
+        }
+    }
 }

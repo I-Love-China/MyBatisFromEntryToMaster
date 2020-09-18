@@ -6,4 +6,6 @@ public interface UserMapper {
     SysUser selectById(Long id);
 
     int insert(SysUser sysUser);
+
+    int updateById(SysUser sysUser);
 }
