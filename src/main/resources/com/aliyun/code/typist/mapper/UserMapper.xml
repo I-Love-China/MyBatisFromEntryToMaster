@@ -3,6 +3,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aliyun.code.typist.mapper.UserMapper">
     <select id="selectById" resultType="SysUser">
-        select * from sys_user where id = #{id}
+        select *
+        from sys_user
+        where id = #{id}
     </select>
+
+    <insert id="insert">
+        insert into sys_user(id, user_name, user_password, user_email,
+                             user_info, head_img, create_time)
+        values (#{id}, #{userName}, #{userPassword}, #{userEmail},
+                #{userInfo}, #{headImg, jdbcType=BLOB},
+                #{createTime, jdbcType=TIMESTAMP})
+    </insert>
 </mapper>
