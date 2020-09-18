@@ -42,4 +42,17 @@ public interface RoleMapper {
     })
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insertAndWriteBackId_JDBC(SysRole role);
+
+    @Insert({
+            "insert into sys_role",
+            "(role_name, enabled, create_by, create_time) values",
+            "(#{roleName}, #{enabled}, #{createBy}, #{createTime})"
+    })
+    @SelectKey(
+            statement = "select last_insert_id()",
+            keyProperty = "id",
+            resultType = long.class,
+            before = false
+    )
+    int insertAndWriteBackId_SELECT_KEY(SysRole role);
 }

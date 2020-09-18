@@ -84,6 +84,16 @@ public class SysRoleMapperTest extends BaseMapperTest {
             Assert.assertEquals(rows, 1);
             Assert.assertNotNull(role.getId());
 
+            SysRole role_2 = new SysRole();
+            role_2.setRoleName("测试插入_2");
+            role_2.setEnabled(1);
+            role_2.setCreateBy(1001L);
+            role_2.setCreateTime(new Date());
+
+            int rows_2 = roleMapper.insertAndWriteBackId_SELECT_KEY(role_2);
+            Assert.assertEquals(rows_2, 1);
+            Assert.assertNotNull(role_2.getId());
+
             sqlSession.rollback();
         }
     }
