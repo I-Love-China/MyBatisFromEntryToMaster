@@ -16,13 +16,18 @@ public interface RoleMapper {
     @ResultMap("roleMap")
     List<SysRole> selectAll();
 
-    @Results(value = {
-            @Result(property = "id", column = "id", id = true),
-            @Result(property = "roleName", column = "role_name"),
-            @Result(property = "enabled", column = "enabled"),
-            @Result(property = "createBy", column = "create_by"),
-            @Result(property = "createTime", column = "create_time"),
-    })
+    @Results(id = "@roleMap",
+            value = {
+                    @Result(property = "id", column = "id", id = true),
+                    @Result(property = "roleName", column = "role_name"),
+                    @Result(property = "enabled", column = "enabled"),
+                    @Result(property = "createBy", column = "create_by"),
+                    @Result(property = "createTime", column = "create_time"),
+            })
     @Select("select * from sys_role where enabled = #{enabled}")
     List<SysRole> selectByEnabled(Integer enabled);
+
+    @Select("select * from sys_role where create_by = #{creatorId}")
+    @ResultMap("@roleMap")
+    List<SysRole> selectByCreateBy(Long creatorId);
 }

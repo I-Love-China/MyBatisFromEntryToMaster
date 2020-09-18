@@ -38,4 +38,15 @@ public class SysRoleMapperTest extends BaseMapperTest {
             Assert.assertTrue(!roles.isEmpty());
         }
     }
+
+    @Test
+    public void testSelectByCreateBy() {
+        try (SqlSession sqlSession = getSqlSession()) {
+            RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+            List<SysRole> roles = roleMapper.selectByCreateBy(1L);
+
+            Assert.assertNotNull(roles);
+            Assert.assertTrue(!roles.isEmpty());
+        }
+    }
 }
