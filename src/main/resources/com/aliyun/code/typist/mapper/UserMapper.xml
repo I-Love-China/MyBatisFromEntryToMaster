@@ -37,4 +37,16 @@
         where user_name = #{userName}
           and user_password = #{userPassword}
     </select>
+
+    <select id="selectByUser" resultType="SysUser">
+        select *
+        from sys_user
+        where 1 = 1 <!-- 注意这里哦 -->
+        <if test="userName != null and userName != ''">
+            and user_name like concat('%', #{userName}, '%')
+        </if>
+        <if test="userPassword != null and userPassword != ''">
+            and user_password = #{userPassword}
+        </if>
+    </select>
 </mapper>

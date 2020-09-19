@@ -95,4 +95,19 @@ public class SysUserMapperTest extends BaseMapperTest {
             Assert.assertTrue(!userList_2.isEmpty());
         }
     }
+
+    @Test
+    public void testSelectByUser() {
+        try (SqlSession sqlSession = getSqlSession()) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+            SysUser condition = new SysUser();
+            condition.setUserName("admin");
+            condition.setUserPassword("123456");
+
+            List<SysUser> users = userMapper.selectByUser(condition);
+            Assert.assertNotNull(users);
+            Assert.assertTrue(!users.isEmpty());
+        }
+    }
 }
