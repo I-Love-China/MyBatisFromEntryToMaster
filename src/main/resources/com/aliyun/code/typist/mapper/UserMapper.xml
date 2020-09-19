@@ -43,7 +43,9 @@
         from sys_user
         where 1 = 1 <!-- 注意这里哦 -->
         <if test="userName != null and userName != ''">
-            and user_name like concat('%', #{userName}, '%')
+            <!-- <bind> 可以使用 OGNL 表达式创建一个变量并将其绑定到上下文中 -->
+            <bind name="userNameLike" value="'%' + userName + '%'"/>
+            and user_name like #{userNameLike}
         </if>
         <if test="userPassword != null and userPassword != ''">
             and user_password = #{userPassword}
