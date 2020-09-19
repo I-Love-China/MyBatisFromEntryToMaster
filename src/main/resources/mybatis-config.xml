@@ -12,6 +12,12 @@
         <package name="com.aliyun.code.typist.model"/>
     </typeAliases>
 
+    <typeHandlers>
+        <typeHandler
+                javaType="com.aliyun.code.typist.type.Enabled"
+                handler="com.aliyun.code.typist.type.EnabledTypeHandler" />
+    </typeHandlers>
+
     <environments default="dev">
         <environment id="dev">
             <transactionManager type="JDBC">

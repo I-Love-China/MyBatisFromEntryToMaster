@@ -2,6 +2,7 @@ package com.aliyun.code.typist;
 
 import com.aliyun.code.typist.mapper.RoleMapper;
 import com.aliyun.code.typist.model.SysRole;
+import com.aliyun.code.typist.type.Enabled;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Assert;
 import org.junit.Test;
@@ -58,7 +59,7 @@ public class SysRoleMapperTest extends BaseMapperTest {
 
             SysRole role = new SysRole();
             role.setRoleName("测试插入");
-            role.setEnabled(0);
+            role.setEnabled(Enabled.DISABLED);
             role.setCreateBy(1L);
             role.setCreateTime(new Date());
 
@@ -76,7 +77,7 @@ public class SysRoleMapperTest extends BaseMapperTest {
 
             SysRole role = new SysRole();
             role.setRoleName("测试插入");
-            role.setEnabled(0);
+            role.setEnabled(Enabled.DISABLED);
             role.setCreateBy(1L);
             role.setCreateTime(new Date());
 
@@ -86,7 +87,7 @@ public class SysRoleMapperTest extends BaseMapperTest {
 
             SysRole role_2 = new SysRole();
             role_2.setRoleName("测试插入_2");
-            role_2.setEnabled(1);
+            role_2.setEnabled(Enabled.ENABLED);
             role_2.setCreateBy(1001L);
             role_2.setCreateTime(new Date());
 
