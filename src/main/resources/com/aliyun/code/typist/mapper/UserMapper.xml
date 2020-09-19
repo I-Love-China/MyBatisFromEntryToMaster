@@ -66,4 +66,17 @@
             </otherwise>
         </choose>
     </select>
+
+    <select id="selectByWhere" resultType="SysUser">
+        select * from sys_user
+        <where>
+            <!-- 注意这里没有 1 = 1 这个条件了 -->
+            <if test="userName != null and userName != ''">
+                and user_name like concat('%', #{userName}, '%')
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                and user_password = #{userPassword}
+            </if>
+        </where>
+    </select>
 </mapper>

@@ -25,4 +25,6 @@ public interface UserMapper {
     List<SysUser> selectByUser(SysUser user);
 
     List<SysUser> selectByIdOrUserName(SysUser user);
+
+    List<SysUser> selectByWhere(SysUser user);
 }
