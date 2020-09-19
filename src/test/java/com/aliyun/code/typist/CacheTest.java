@@ -77,8 +77,8 @@ public class CacheTest extends BaseMapperTest {
             SysRole role1 = roleMapper.selectById(1L);
             SysRole role2 = roleMapper.selectById(1L);
             Assert.assertEquals("测试 L2Cache", role1.getRoleName());
-            Assert.assertSame(role1, role2);
-            Assert.assertSame(role, role1);
+            Assert.assertNotSame(role1, role2);
+            Assert.assertNotSame(role, role1);
         }
     }
 }
