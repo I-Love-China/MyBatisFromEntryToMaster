@@ -34,7 +34,7 @@ public interface UserMapper {
 
     int updateByTrim_Set(SysUser user);
 
-    List<SysUser> selectByIdList(List<Long> ids);
+    List<SysUser> selectByIdList(@Param("idList") List<Long> ids);
 
     List<SysUser> selectByIdArray(Long[] ids);
 
