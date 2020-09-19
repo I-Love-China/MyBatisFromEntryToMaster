@@ -64,7 +64,6 @@ public class CacheTest extends BaseMapperTest {
             // 此时还是一级缓存的作用
             Assert.assertEquals(role1.getRoleName(), role2.getRoleName());
             Assert.assertSame(role1, role2);
-
             role = role1;
         }
 

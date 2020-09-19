@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
-@CacheNamespace(readWrite = true)
+@CacheNamespace(readWrite = true, implementation = org.mybatis.caches.redis.RedisCache.class)
 public interface RoleMapper {
     @Select("select * from sys_role where id = #{id}")
     SysRole selectById(Long id);
