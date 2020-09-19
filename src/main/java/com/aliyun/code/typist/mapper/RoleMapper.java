@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
+@CacheNamespace(readWrite = false)
 public interface RoleMapper {
     @Select("select * from sys_role where id = #{id}")
     SysRole selectById(Long id);
