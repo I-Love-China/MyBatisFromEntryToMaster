@@ -6,10 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SysUserMapperTest extends BaseMapperTest {
     @Test
@@ -188,6 +185,19 @@ public class SysUserMapperTest extends BaseMapperTest {
             Assert.assertEquals(rows, 1);
 
             sqlSession.rollback();
+        }
+    }
+
+    @Test
+    public void testSelectByIdList() {
+        try (SqlSession sqlSession = getSqlSession()) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+            List<Long> ids = Arrays.asList(1L, 1001L);
+            List<SysUser> users = userMapper.selectByIdList(ids);
+
+            Assert.assertNotNull(users);
+            Assert.assertEquals(users.size(), 2);
         }
     }
 }

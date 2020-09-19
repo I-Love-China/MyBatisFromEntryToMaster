@@ -33,4 +33,7 @@ public interface UserMapper {
     int updateByIdSelective(SysUser sysUser);
 
     int updateByTrim_Set(SysUser user);
+
+    List<SysUser> selectByIdList(List<Long> ids);
+
 }

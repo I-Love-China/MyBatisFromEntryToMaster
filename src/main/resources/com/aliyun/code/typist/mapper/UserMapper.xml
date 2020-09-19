@@ -126,4 +126,14 @@
         </trim>
         where id = #{id}
     </update>
+
+    <select id="selectByIdList" resultType="SysUser">
+        select * from sys_user
+        where id in
+        <!-- Collection 的参数名默认为 collection -->
+        <!-- List 的参数名默认为 list 或 collection -->
+        <foreach collection="collection" open="(" close=")" item="id" separator=",">
+            #{id}
+        </foreach>
+    </select>
 </mapper>
