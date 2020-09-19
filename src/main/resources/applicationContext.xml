@@ -24,6 +24,6 @@
         <property name="configLocation" value="classpath:mybatis-config.xml" />
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.aliyun.code.typist.mapper" />
+        <!--<property name="basePackage" value="com.aliyun.code.typist.mapper" />-->
     </bean>
 </beans>
