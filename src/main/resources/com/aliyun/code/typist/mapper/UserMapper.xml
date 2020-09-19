@@ -136,4 +136,13 @@
             #{id}
         </foreach>
     </select>
+
+    <select id="selectByIdArray" resultType="SysUser">
+        select * from sys_user
+        where id in
+        <!-- 数组 的参数名默认为 array -->
+        <foreach collection="array" open="(" close=")" item="id" separator=",">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

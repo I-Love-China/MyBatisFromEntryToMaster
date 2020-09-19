@@ -200,4 +200,17 @@ public class SysUserMapperTest extends BaseMapperTest {
             Assert.assertEquals(users.size(), 2);
         }
     }
+
+    @Test
+    public void testSelectByIdArray() {
+        try (SqlSession sqlSession = getSqlSession()) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+            Long[] ids = new Long[]{1L, 1001L};
+            List<SysUser> users = userMapper.selectByIdArray(ids);
+
+            Assert.assertNotNull(users);
+            Assert.assertEquals(users.size(), 2);
+        }
+    }
 }
