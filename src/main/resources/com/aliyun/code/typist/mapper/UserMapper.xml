@@ -145,4 +145,14 @@
             #{id}
         </foreach>
     </select>
+
+    <update id="updateByMap">
+        update sys_user
+        set
+        <!-- Map 的参数名默认为 _parameter -->
+        <foreach collection="_parameter" item="val" index="key" separator=",">
+            ${key} = #{val}
+        </foreach>
+        where id = #{id}
+    </update>
 </mapper>

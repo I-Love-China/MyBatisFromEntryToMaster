@@ -213,4 +213,20 @@ public class SysUserMapperTest extends BaseMapperTest {
             Assert.assertEquals(users.size(), 2);
         }
     }
+
+    @Test
+    public void testUpdateByMap() {
+        try (SqlSession sqlSession = getSqlSession()) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+            Map<String, Object> param = new HashMap<>();
+            param.put("id", 1L);
+            param.put("user_info", "测试 UpdateByMap");
+
+            int rows = userMapper.updateByMap(param);
+            Assert.assertEquals(rows, 1);
+
+            sqlSession.rollback();
+        }
+    }
 }

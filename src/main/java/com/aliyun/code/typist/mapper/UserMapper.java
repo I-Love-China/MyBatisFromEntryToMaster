@@ -37,4 +37,6 @@ public interface UserMapper {
     List<SysUser> selectByIdList(List<Long> ids);
 
     List<SysUser> selectByIdArray(Long[] ids);
+
+    int updateByMap(Map<String, Object> map);
 }
