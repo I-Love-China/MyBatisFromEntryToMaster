@@ -79,4 +79,21 @@
             </if>
         </where>
     </select>
+
+    <update id="updateByIdSelective">
+        update sys_user
+        <set>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                user_password = #{userPassword},
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                user_email = #{userEmail},
+            </if>
+            id = #{id}, <!-- 注意这里哦 -->
+        </set>
+        where id = #{id}
+    </update>
 </mapper>

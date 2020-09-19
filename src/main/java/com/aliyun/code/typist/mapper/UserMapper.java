@@ -27,4 +27,6 @@ public interface UserMapper {
     List<SysUser> selectByIdOrUserName(SysUser user);
 
     List<SysUser> selectByWhere(SysUser user);
+
+    int updateByIdSelective(SysUser sysUser);
 }
