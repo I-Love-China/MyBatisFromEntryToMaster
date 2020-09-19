@@ -29,7 +29,7 @@ public class SysPrivilegeMapperTest extends BaseMapperTest {
 
     @Test
     public void testInsert() {
-        try(SqlSession sqlSession = getSqlSession()) {
+        try (SqlSession sqlSession = getSqlSession()) {
             PrivilegeMapper privilegeMapper = sqlSession.getMapper(PrivilegeMapper.class);
 
             SysPrivilege privilege = new SysPrivilege();

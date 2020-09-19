@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aliyun.code.typist.mapper.PrivilegeMapper">
+    <cache type="org.mybatis.caches.redis.RedisCache" />
     <resultMap id="privilegeMap" type="com.aliyun.code.typist.model.SysPrivilege">
         <id property="id" column="id" />
         <result property="privilegeName" column="privilege_name" />
