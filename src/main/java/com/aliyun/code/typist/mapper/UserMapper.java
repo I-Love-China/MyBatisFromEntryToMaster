@@ -23,4 +23,6 @@ public interface UserMapper {
                                      @Param("userPassword") String userPwd);
 
     List<SysUser> selectByUser(SysUser user);
+
+    List<SysUser> selectByIdOrUserName(SysUser user);
 }

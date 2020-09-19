@@ -49,4 +49,21 @@
             and user_password = #{userPassword}
         </if>
     </select>
+
+    <select id="selectByIdOrUserName" resultType="SysUser">
+        select *
+        from sys_user
+        where 1 = 1
+        <choose>
+            <when test="id != null">
+                and id = #{id}
+            </when>
+            <when test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </when>
+            <otherwise>
+                and 1 = 2 <!-- 注意这里哦 -->
+            </otherwise>
+        </choose>
+    </select>
 </mapper>
