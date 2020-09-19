@@ -147,6 +147,19 @@ public class SysUserMapperTest extends BaseMapperTest {
     }
 
     @Test
+    public void testSelectByTrim_Where() {
+        try (SqlSession sqlSession = getSqlSession()) {
+            SysUser condition = new SysUser();
+            condition.setUserName("admin");
+            condition.setUserPassword("123456");
+
+            List<SysUser> users = sqlSession.getMapper(UserMapper.class).selectByTrim_Where(condition);
+            Assert.assertNotNull(users);
+            Assert.assertTrue(!users.isEmpty());
+        }
+    }
+
+    @Test
     public void testUpdateByIdSelective() {
         try (SqlSession sqlSession = getSqlSession()) {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
@@ -156,6 +169,22 @@ public class SysUserMapperTest extends BaseMapperTest {
 
             user.setUserEmail("测试 updateByIdSelective");
             int rows = userMapper.updateByIdSelective(user);
+            Assert.assertEquals(rows, 1);
+
+            sqlSession.rollback();
+        }
+    }
+
+    @Test
+    public void testUpdateByTrim_Set() {
+        try (SqlSession sqlSession = getSqlSession()) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+            SysUser user = userMapper.selectById(1L);
+            Assert.assertNotNull(user);
+
+            user.setUserEmail("测试 updateByIdSelective");
+            int rows = userMapper.updateByTrim_Set(user);
             Assert.assertEquals(rows, 1);
 
             sqlSession.rollback();

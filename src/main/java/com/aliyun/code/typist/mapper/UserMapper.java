@@ -28,5 +28,9 @@ public interface UserMapper {
 
     List<SysUser> selectByWhere(SysUser user);
 
+    List<SysUser> selectByTrim_Where(SysUser user);
+
     int updateByIdSelective(SysUser sysUser);
+
+    int updateByTrim_Set(SysUser user);
 }

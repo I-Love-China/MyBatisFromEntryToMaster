@@ -80,6 +80,19 @@
         </where>
     </select>
 
+    <select id="selectByTrim_Where" resultType="SysUser">
+        select *
+        from sys_user
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="userName != null and userName != ''">
+                and user_name like concat('%', #{userName}, '%')
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                and user_password = #{userPassword}
+            </if>
+        </trim>
+    </select>
+
     <update id="updateByIdSelective">
         update sys_user
         <set>
@@ -94,6 +107,23 @@
             </if>
             id = #{id}, <!-- 注意这里哦 -->
         </set>
+        where id = #{id}
+    </update>
+
+    <update id="updateByTrim_Set">
+        update sys_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                user_password = #{userPassword},
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                user_email = #{userEmail},
+            </if>
+            id = #{id},
+        </trim>
         where id = #{id}
     </update>
 </mapper>
